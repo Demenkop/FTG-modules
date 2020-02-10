@@ -1,5 +1,7 @@
 """.cry"""
 
+# Edited for FTg by demenkop
+
 from telethon import events
 
 import asyncio
