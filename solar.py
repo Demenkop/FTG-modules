@@ -2,6 +2,8 @@
 Available Commands:
 .solar"""
 
+"""Edited for FTG"""
+
 from telethon import events
 import asyncio
 @borg.on(events.NewMessage(pattern=r"\.solar", outgoing=True))
