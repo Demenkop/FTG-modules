@@ -1,4 +1,6 @@
-"""COMMAND : .ae"""
+""".ae"""
+
+# Edited for FTg by demenkop
 
 from telethon import events
 
