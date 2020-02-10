@@ -1,8 +1,6 @@
-"""Emoji
-Available Commands:
-.solar"""
+""".solar"""
 
-"""Edited for FTG"""
+# Edited for FTg by demenkop
 
 from telethon import events
 import asyncio
