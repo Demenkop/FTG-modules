@@ -6,7 +6,7 @@ All the plugins i've changed are marked with #.
 ## List of plugins 
 
 1. all — silent @all
-2. cry — some sort of animation(not working)
+2. cry — some sort of animation (not working)
 3. rbg — remove background plugin (working)
 4. solar — solar system anim
 5. tag — different @tags in chat
