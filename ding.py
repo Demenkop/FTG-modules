@@ -25,7 +25,7 @@ async def _(event):
             "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
             "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
             "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-            "⬜⬜⬜⬜⬜\n⬜ [BOTHUB](https://github.com/mkaraniya/BotHub/) ⬜\n⬜⬜⬜⬜⬜"
+            "⬜⬜⬜⬜⬜\n⬜ [Demenkop](http://t.me/demenkop) ⬜\n⬜⬜⬜⬜⬜"
  ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
