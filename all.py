@@ -1,6 +1,4 @@
-""".all"""
-
-# Edited for FTg by demenkop
+# .all
 
 from telethon import events
 
