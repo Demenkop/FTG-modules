@@ -1,5 +1,6 @@
 # .rbg
 
+# please, make sure change api key to yours. thanks
 
 # http://github.com/AvinashReddy3108/
 
