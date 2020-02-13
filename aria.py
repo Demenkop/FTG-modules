@@ -2,10 +2,10 @@
  # Torrent file from local: .tor file_path
  #  Show Downloads: .show
  #  Remove All Downloads: .ariaRM
-	  
- # Edited for FTg by demenkop    
- 
- #  By:- @Zero_cool7870	   
+
+ # Edited for FTg by demenkop
+
+ #  By:- @Zero_cool7870
 
 
 import aria2p
@@ -20,7 +20,7 @@ aria2_is_running = os.system(cmd)
 
 aria2 = aria2p.API(
 		aria2p.Client(
-			host="http://localhost",
+			host="http://127.0.0.1",
 			port=6800,
 			secret=""
 		)
@@ -33,7 +33,7 @@ async def magnet_download(event):
 		return
 	var = event.text
 	var = var[8:]
-	
+
 	magnet_uri = var
 	magnet_uri = magnet_uri.replace("`","")
 	logger.info(magnet_uri)
@@ -48,7 +48,7 @@ async def magnet_download(event):
 	await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
 	new_gid = await check_metadata(gid)
 	await progress_status(gid=new_gid,event=event,previous=None)
-	
+
 
 
 @borg.on(events.NewMessage(pattern=r"\.tor", outgoing=True))
@@ -56,7 +56,7 @@ async def torrent_download(event):
 	if event.fwd_from:
 		return
 	var = event.text[5:]
-	torrent_file_path = var	
+	torrent_file_path = var
 	torrent_file_path = torrent_file_path.replace("`","")
 	logger.info(torrent_file_path)
 	try: #Add Torrent Into Queue
@@ -72,11 +72,11 @@ async def magnet_download(event):
 	if event.fwd_from:
 		return
 	var = event.text[5:]
-	print(var)	
+	print(var)
 	uris = [var]
 
-	#Add URL Into Queue 
-	try:	
+	#Add URL Into Queue
+	try:
 		download = aria2.add_uris(uris, options=None, position=None)
 	except Exception as e:
 		await event.edit("`Error:\n`"+str(e))
@@ -95,15 +95,15 @@ async def magnet_download(event):
 			else:
 					msg = file.error_message
 					await event.edit(msg)
-					return 	
+					return
 		except Exception as e:
 			if "not found" in str(e):
 				await event.edit("Download Cancelled:\n`"+file.name+"`")
 				return
 			print(str(e))
-			await event.edit("Error:\n`"+str(e)+"`")	
+			await event.edit("Error:\n`"+str(e)+"`")
 			return
-			
+
 	await event.edit("File Downloaded Successfully:\n`"+file.name+"`")
 
 
@@ -112,20 +112,20 @@ async def remove_all(event):
 	if event.fwd_from:
 		return
 	try:
-		removed = aria2.remove_all(force=True)	
+		removed = aria2.remove_all(force=True)
 		aria2.purge_all()
 	except:
 		pass
 	if removed == False:  #If API returns False Try to Remove Through System Call.
 		os.system("aria2p remove-all")
-	await event.edit("`Removed All Downloads.`")  
+	await event.edit("`Removed All Downloads.`")
 
 @borg.on(events.NewMessage(pattern=r"\.show", outgoing=True))
 async def show_all(event):
 	if event.fwd_from:
 		return
 	output = "output.txt"
-	downloads = aria2.get_downloads() 
+	downloads = aria2.get_downloads()
 	msg = ""
 	for download in downloads:
 		msg = msg+"File: `"+str(download.name) +"`\nSpeed: "+ str(download.download_speed_string())+"\nProgress: "+str(download.progress_string())+"\nTotal Size: "+str(download.total_length_string())+"\nStatus: "+str(download.status)+"\nETA:  "+str(download.eta_string())+"\n\n"
@@ -135,8 +135,8 @@ async def show_all(event):
 		await event.edit("`Output is huge. Sending as a file...`")
 		with open(output,'w') as f:
 			f.write(msg)
-		await asyncio.sleep(2)	
-		await event.delete()	
+		await asyncio.sleep(2)
+		await event.delete()
 		await borg.send_file(
 			event.chat_id,
 			output,
@@ -144,13 +144,13 @@ async def show_all(event):
 			supports_streaming=False,
 			allow_cache=False,
 			reply_to=event.message.id,
-			)				
+			)
 
 async def check_metadata(gid):
 	file = aria2.get_download(gid)
 	new_gid = file.followed_by_ids[0]
 	logger.info("Changing GID "+gid+" to "+new_gid)
-	return new_gid	
+	return new_gid
 
 async def progress_status(gid,event,previous):
 	try:
@@ -163,9 +163,9 @@ async def progress_status(gid,event,previous):
 					previous = msg
 			else:
 				logger.info(str(file.error_message))
-				await event.edit("Error : `{}`".format(str(file.error_message)))		
+				await event.edit("Error : `{}`".format(str(file.error_message)))
 				return
-			await asyncio.sleep(EDIT_SLEEP_TIME_OUT)	
+			await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
 			await progress_status(gid,event,previous)
 		else:
 			await event.edit("File Downloaded Successfully: `{}`".format(file.name))
