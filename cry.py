@@ -1,4 +1,4 @@
-""".cry"""
+# .cry
 
 # Edited for FTg by demenkop
 
