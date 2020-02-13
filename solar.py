@@ -1,4 +1,4 @@
-""".solar"""
+# .solar
 
 # Edited for FTg by demenkop
 
