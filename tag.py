@@ -1,6 +1,6 @@
+# .all, .admin, .bot
 
 # https://github.com/LegendaryUnicorn
-
 
 from .. import loader, utils
 
