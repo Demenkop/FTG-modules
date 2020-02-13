@@ -18,7 +18,7 @@ from uniborg.util import admin_cmd
 
 
 EDIT_SLEEP_TIME_OUT = 15
-ARIA2_STARTED_PORT = 6800
+ARIA2_STARTED_PORT = 1945
 aria2_daemon_start_cmd = f"aria2c --enable-rpc --rpc-listen-all=false --rpc-listen-port {ARIA2_STARTED_PORT} --max-connection-per-server=10 --rpc-max-request-size=1024M --seed-time=0.01 --seed-ratio=100.0 --min-split-size=10M --follow-torrent=mem --split=10 --daemon=true"
 aria2_is_running = False
 aria2 = None
