@@ -5,7 +5,7 @@ This is a repo of [bothub plugins](https://github.com/mkaraniya/BotHub/tree/mast
 ## List of plugins 
 
 1. all — silent @all
-2. cry — (not working)
+2. cry — some sort of animation(not working)
 3. rbg — remove background plugin (working)
 4. solar — solar system anim
 5. tag — different @tags in chat
