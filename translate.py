@@ -17,11 +17,12 @@ class TranslateMod(loader.Module):
         """.translate [from_lang->][->to_lang] <text>"""
         args = utils.get_args(message)
         if len(args) == 0 or "->" not in args[0]:
-            text = " ".join(args).replace("'","\'")
-            text = text.replace('"','\"')
+            text = " ".join(args).replace("'", "\'")
+            text = text.replace('"', '\"')
             args = ["", self.config["DEFAULT_LANG"]]
         else:
-            text = " ".join(args[1:])
+            text = " ".join(args[1:]).replace("'", "\'")
+            text = text.replace('"', '\"')
             args = args[0].split("->")
         if len(text) == 0 and message.is_reply:
             text = (await message.get_reply_message()).message
@@ -29,6 +30,8 @@ class TranslateMod(loader.Module):
             await message.edit(_("Invalid text to translate"))
             return
         if args[0] == "":
+            text = text.replace("'", "\'")
+            text = text.replace('"','\"')
             args[0] = self.tr.detect(text)
         if len(args) == 3:
             del args[1]
