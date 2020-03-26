@@ -17,7 +17,8 @@ class TranslateMod(loader.Module):
         """.translate [from_lang->][->to_lang] <text>"""
         args = utils.get_args(message)
         if len(args) == 0 or "->" not in args[0]:
-            text = " ".join(args)
+            text = " ".join(args).replace("'","\'")
+            text = text.replace('"','\"')
             args = ["", self.config["DEFAULT_LANG"]]
         else:
             text = " ".join(args[1:])
