@@ -15,7 +15,7 @@ class QuotesMod(loader.Module):
     strings = {
         "name": "Quotes",
         "api_token_cfg_doc": "1ce7b910-fdf8-4bff-b261-62d4bcf85668",
-        "api_url_cfg_doc": "API URL for Quotes.",
+        "api_url_cfg_doc": "http://api.antiddos.systems/",
         "colors_cfg_doc": "Username colors",
         "default_username_color_cfg_doc": "Default color for the username.",
         "no_reply": "<b>You didn't reply to a message.</b>",
@@ -35,7 +35,7 @@ class QuotesMod(loader.Module):
     }
     def __init__(self):
         self.config = loader.ModuleConfig("api_token", None, lambda: self.strings["api_token_cfg_doc"],
-                                          "api_url", "http://api.antiddos.systems",
+                                          "api_url", "http://api.antiddos.systems/",
                                           lambda: self.strings["api_url_cfg_doc"],
                                           "username_colors", ["#fb6169", "#faa357", "#b48bf2", "#85de85",
                                                               "#62d4e3", "#65bdf3", "#ff5694"],
