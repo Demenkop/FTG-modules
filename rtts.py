@@ -1,6 +1,6 @@
 # Russian tts for Friendly-telegram and Uniborg: .rtts
 # By @Demenkop, based on Qoutly module for BotHub
-# Test-build ID: 4
+# Test-build ID: 5
 
 import datetime
 from telethon import events
@@ -13,7 +13,7 @@ async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-        reply_message = event.pattern_match.group(1)
+        user_msg = """{}""".format(event.pattern_match.group(1))
         self_mess = True
         if not reply_message:
             await event.edit("Вы должны или написать шото, или ответить на шото")
@@ -29,7 +29,10 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=616484527))
-              if not self_mess await event.client.forward_messages(chat, reply_message) else await event.client.send_message(chat.chat_id, message="что")
+              if not self_mess:
+                  await event.client.forward_messages(chat, reply_message)
+              else: 
+                  await event.client.send_message(chat.chat_id, user_msg)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Разблокируй @aleksobot, ибо магия не произойдёт```")
