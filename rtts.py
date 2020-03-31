@@ -1,4 +1,4 @@
-# Russian tts for Friendly-telegram and Uniborg: .qbot
+# Russian tts for Friendly-telegram and Uniborg: .rtts
 # By @Demenkop, based on Qoutly module for BotHub
 
 import datetime
