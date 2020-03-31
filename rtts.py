@@ -29,7 +29,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=616484527))
-              if not self_mess await event.client.forward_messages(chat, reply_message) else await event.client.send_message(chat.chat_id, reply_message "")
+              if not self_mess await event.client.forward_messages(chat, reply_message) else await event.client.send_message(chat.chat_id, reply_message.message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Разблокируй @aleksobot, ибо магия не произойдёт```")
