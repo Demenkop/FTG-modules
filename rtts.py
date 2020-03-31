@@ -1,6 +1,6 @@
 # Russian tts for Friendly-telegram and Uniborg: .rtts
 # By @Demenkop, based on Qoutly module for BotHub
-# Test-build ID: 1
+# Test-build ID: 2
 
 import datetime
 from telethon import events
