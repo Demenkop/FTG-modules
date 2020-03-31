@@ -1,7 +1,9 @@
 # Накодено Деменкопом.
-# Используя API b0mber'а от crinny
+# Используя API b0mb3r'а от crinny
 
-# Version test(0.1)
+# Version 1.0
+# В поля bomber_ip и bomber_port вставьте значения
+# вашего сервера с запущеным на ним b0mb3r'ом
 
 from .. import loader, utils
 import requests
