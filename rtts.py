@@ -23,17 +23,17 @@ async def _(event):
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
-    await event.edit("```Making a Quote```")
+    await event.edit("```Происходит магия Деменкопа```")
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=616484527))
               await event.client.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please unblock me (@QuotLyBot) u Nigga```")
+              await event.reply("```Разблокируй @aleksobot, ибо магия не произойдёт```")
               return
           if response.text.startswith("Hi!"):
-             await event.edit("```Can you kindly disable your forward privacy settings for good?```")
+             await event.edit("```А сейчас я не могу переслать. Разрешишь, сука ты?```")
           else: 
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
