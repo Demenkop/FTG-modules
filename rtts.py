@@ -16,12 +16,12 @@ async def _(event):
         if not reply_message:
             await event.edit("Вы должны или написать шото, или ответить на шото")
     if event.reply_to_msg_id:
-        reply_message = await event.get_reply_message() 
+        reply_message = await event.get_reply_message()
+        sender = reply_message.sender
         if not reply_message.text:
             await event.edit("```Ты на текст должен ответить, диб*ил```")
             return
     chat = "@aleksobot"
-    sender = reply_message.sender
     await event.edit("```Происходит магия Деменкопа```")
     async with event.client.conversation(chat) as conv:
           try:     
