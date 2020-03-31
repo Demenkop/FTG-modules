@@ -13,10 +13,12 @@ async def _(event):
         return 
     if not event.reply_to_msg_id:
         reply_message = event.pattern_match.group(1)
+        self_mess = True
         if not reply_message:
             await event.edit("Вы должны или написать шото, или ответить на шото")
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
+        self_mess = False
         sender = reply_message.sender
         if not reply_message.text:
             await event.edit("```Ты на текст должен ответить, диб*ил```")
@@ -26,7 +28,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=616484527))
-              await event.client.forward_messages(chat, reply_message)
+              if not self_mess await event.client.forward_messages(chat, reply_message) else await event.client.send_message(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Разблокируй @aleksobot, ибо магия не произойдёт```")
