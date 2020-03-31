@@ -27,10 +27,6 @@ class Bomber(loader.Module):
         self.config = loader.ModuleConfig("bomber_ip", None, lambda: self.strings["bomber_ip"],
                                           "bomber_port", None, lambda: self.strings["bomber_port"])
 
-    #def config_complete(self):
-        # self.bomb_ip = Bomber(self.config["bomber_ip"])
-        # self.bomb_port = Bomber(self.config["bomber_port"])
-
     async def client_ready(self, client, db):
         self._db = db
         self._client = client
